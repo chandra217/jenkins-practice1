@@ -127,9 +127,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Verfy Repo') {
             steps {
-                echo 'Hello World'
+                echo '$GIT_BRANCH'
             }
         }
         stage('GoodBye') {
