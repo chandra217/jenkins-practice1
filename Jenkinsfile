@@ -1,24 +1,24 @@
-// pipeline {
-//    agent any
+pipeline {
+   agent any
 
-//    stages {
-//       stage('Verify Branch') {
-//          steps {
-//             echo "$GIT_BRANCH"
-//          }
-//       }
-//       stage('Docker Build') {
-//          steps {
-//             pwsh(script: 'docker images -a')
-//             pwsh(script: """
-//                cd azure-vote/
-//                docker images -a
-//                docker build -t jenkins-pipeline .
-//                docker images -a
-//                cd ..
-//             """)
-//          }
-//       }
+   stages {
+      stage('Verify Branch') {
+         steps {
+            echo "$GIT_BRANCH"
+         }
+      }
+      stage('Docker Build') {
+         steps {
+            pwsh(script: 'docker images -a')
+            pwsh(script: """
+               cd azure-vote/
+               docker images -a
+               docker build -t jenkins-pipeline .
+               docker images -a
+               cd ..
+            """)
+         }
+      }
 //       stage('Start test app') {
 //          steps {
 //             pwsh(script: """
@@ -121,22 +121,5 @@
 //             )
 //          }
 //       }
-//    }
-// }
-pipeline {
-    agent any
-
-    stages {
-        stage('Verfy Repo') {
-            steps {
-                echo '$GIT_BRANCH'
-            }
-        }
-        stage('GoodBye') {
-            steps {
-                echo 'GoodBye World'
-            }
-        }
-        
-    }
+   }
 }
